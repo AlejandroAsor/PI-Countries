@@ -10,7 +10,7 @@ import {
   DELETE_ACTIVITY,
 } from "./typeActions";
 import axios from "axios";
-export const URL = "pi-countries-production-7708.up.railway.app";
+export const URL = "https://pi-countries-production-7708.up.railway.app/";
 export const getCountries = () => {
   return async function (dispatch) {
     try {
