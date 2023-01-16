@@ -10,11 +10,11 @@ import {
   DELETE_ACTIVITY,
 } from "./typeActions";
 import axios from "axios";
-
+export const URL = "https://www.corralesgomez.com";
 export const getCountries = () => {
   return async function (dispatch) {
     try {
-      const json = await axios("http://localhost:3001/countries");
+      const json = await axios(`${URL}/countries`);
       return dispatch({ type: GET_ALL_COUNTRIES, payload: json.data });
     } catch (error) {
       console.log(error.response.data);
@@ -25,7 +25,7 @@ export const getCountries = () => {
 export const getActivities = () => {
   return async function (dispatch) {
     try {
-      const json = await axios("http://localhost:3001/activities");
+      const json = await axios(`${URL}/activities`);
 
       return dispatch({ type: GET_ALL_ACTIVITIES, payload: json.data });
     } catch (error) {
@@ -37,10 +37,7 @@ export const getActivities = () => {
 export const postActivity = (payload) => {
   return async function (dispatch) {
     try {
-      const json = await axios.post(
-        "http://localhost:3001/activities",
-        payload
-      );
+      const json = await axios.post(`${URL}/activities`, payload);
 
       alert(json.data);
       return dispatch({ type: POST_ACTIVITY, payload: json.data });
@@ -54,10 +51,7 @@ export const postActivity = (payload) => {
 export const getNameCountry = (name) => {
   return async function (dispatch) {
     try {
-      const json = await axios(
-        `http://localhost:3001/countries?name=${name}`,
-        {}
-      );
+      const json = await axios(`${URL}/countries?name=${name}`, {});
       return dispatch({ type: GET_NAME_COUNTRY, payload: json.data });
     } catch (error) {
       alert(error.response.data);
@@ -68,7 +62,7 @@ export const getNameCountry = (name) => {
 export const getDetail = (id) => {
   return async function (dispatch) {
     try {
-      return fetch(`http://localhost:3001/countries/${id}`)
+      return fetch(`${URL}/countries/${id}`)
         .then((response) => response.json())
         .then((json) => {
           dispatch({ type: GET_DETAIL, payload: json });
@@ -104,7 +98,7 @@ export const orderBy = (payload) => {
 export const deleteActivity = (id) => {
   return async function (dispatch) {
     try {
-      const json = await axios.delete(`http://localhost:3001/activities/${id}`);
+      const json = await axios.delete(`${URL}/activities/${id}`);
       console.log("json q recibe de la ruta (en el action):");
       console.log(json);
       return dispatch({ type: DELETE_ACTIVITY, payload: id });
