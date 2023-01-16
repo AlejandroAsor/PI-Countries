@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 20px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    flex-wrap: wrap; /* Allow elements to wrap for smaller screens */
+  }
+
+  .container h3 {
+    font-size: 1.2rem; /* Decrease the font-size for smaller screens */
+  }
+
+  .container a {
+    margin-bottom: 10px; /* Add margin for smaller screens */
+  }
+
+  .btnHome,
+  .btnActividad {
+    margin: 5px 0; /* Decrease the margin for smaller screens */
+  }
+}
+
+.container h3 {
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.container a {
+  text-decoration: none;
+}
+
+.btnHome,
+.btnActividad {
+  background-color: transparent;
+  color: white;
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-family: "Montserrat", sans-serif;
+  margin-right: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.btnActividad {
+  border-color: #f44336;
+  color: #f44336;
+}
+
+.btnHome:hover,
+.btnActividad:hover {
+  background-color: white;
+  color: #333;
+}

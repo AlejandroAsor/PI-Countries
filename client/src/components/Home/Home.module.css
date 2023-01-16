@@ -1,0 +1,98 @@
+.container {
+  background-image: url("../../img/landing.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 150vh;
+  background-repeat: no-repeat;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  /* display: flex;
+    flex-direction: column;    
+    justify-content: space-around; */
+}
+
+.filtrado {
+  display: flex;
+  justify-content: space-around;
+}
+
+.continente,
+.actividad,
+.alfabetico,
+.tipo,
+.btnFiltrar,
+.btnReset {
+  margin-top: 30px;
+}
+.continente select,
+.actividad select,
+.alfabetico select,
+.tipo select {
+  padding: 20px 20px;
+  color: #333333;
+  background-color: #79b8b8;
+  border: 1px solid #dddddd;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.contiente:focus,
+.continente:hover,
+.actividad:focus,
+.actividad:hover,
+.alfabetico:focus,
+.alfabetico:hover,
+.tipo:focus,
+.tipo:hover,
+.btnFiltrar:focus,
+.btnFiltrar:hover,
+.btnReset:focus,
+.btnReset:hover {
+  outline: none;
+}
+
+.continente option,
+.actividad option,
+.alfabetico option,
+.tipo option {
+  background: #ffffff;
+  border-radius: 30px;
+  width: 120px;
+}
+
+.btnFiltrar button {
+  padding: 20px 20px;
+  color: #f8f8ff;
+  background-color: #003636;
+  cursor: pointer;
+  border-radius: 30px;
+  width: 120px;
+}
+
+.btnReset button {
+  padding: 10px 20px;
+  color: #f8f8ff;
+  background-color: #003636;
+  cursor: pointer;
+  border-radius: 30px;
+  width: 120px;
+}
+
+.paginado {
+  display: flex;
+  justify-content: space-around;
+  margin-top: -10px;
+}
+
+.searchBar {
+  margin-top: -9px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; /* cuando los elementos no puedan quedar en la misma fila, entonces se muevan al renglón inmediato */
+  margin: 30px;
+}

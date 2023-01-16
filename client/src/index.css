@@ -1,13 +1,36 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Use of Grid or Flexbox to create a responsive layout */
+.container {
+  display: flex; /* or display: grid; */
+  flex-wrap: wrap; /* or grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
+}
+
+.item {
+  flex: 1; /* or grid-column: span 1; */
+  margin: 10px;
+}
+
+/* Use of relative units */
+.container {
+  width: 100%; /* or max-width: 1200px; */
 }

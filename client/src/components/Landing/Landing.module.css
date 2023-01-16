@@ -1,0 +1,45 @@
+.container {
+  background-image: url("https://media1.giphy.com/media/U4FkC2VqpeNRHjTDQ5/giphy.gif?cid=ecf05e47l5edpz8jvhb0m2ernreyp6ndafo5ioxv4g3qnhmn&rid=giphy.gif&ct=g");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh; /* Or any other value */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2em; /* Decrease the font-size for smaller screens */
+  }
+
+  .btn {
+    font-size: 1.2em; /* Decrease the font-size for smaller screens */
+  }
+}
+
+.title {
+  font-size: 4em;
+  color: white;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.btn {
+  font-size: 1.5em;
+  padding: 0.5em 2em;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}

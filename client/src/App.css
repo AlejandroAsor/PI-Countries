@@ -13,6 +13,15 @@
   }
 }
 
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .App-header {
+    font-size: calc(
+      8px + 1vmin
+    ); /* Decrease the font-size for smaller screens */
+  }
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

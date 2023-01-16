@@ -1,3 +1,17 @@
+/* 
+!!!!!!!!!
+
+Este es un archivo de configuración de eslint, que es una herramienta de análisis de código estático utilizada para encontrar problemas de estilo y patrones comunes de errores en el código JavaScript.
+Este es un archivo de configuración de eslint, que es una herramienta de análisis de código estático utilizada para encontrar problemas de estilo y patrones comunes de errores en el código JavaScript.
+
+"env" es un objeto que establece entornos de tiempo de ejecución específicos en los que se ejecutará el código. Estos entornos habilitan o deshabilitan ciertas características del lenguaje, como las globales predefinidas. En este caso, el entorno "node" habilita las globales predefinidas de Node.js, el entorno "es6" habilita las características de ECMAScript 6, y el entorno "mocha" habilita las globales predefinidas de Mocha, un marco de pruebas para Node.js.
+
+"extends" es una cadena que especifica un conjunto de reglas de estilo que se deben aplicar al código. En este caso, se está utilizando el conjunto de reglas "airbnb/base", que es un conjunto de reglas de estilo mantenido por Airbnb.
+
+"settings" es un objeto que permite personalizar ciertas opciones de configuración de eslint. En este caso, se está utilizando "import/resolver" para configurar el resolutor de importaciones de Node.js, que se utiliza para resolver la ubicación de los módulos importados en el código.
+
+"rules" es un objeto que contiene reglas específicas que se deben aplicar al código. Cada regla tiene un nombre y un valor. Si el valor es 0, significa que la regla está deshabilitada. Si el valor es 1, significa que la regla está habilitada en modo de advertencia. Si el valor es 2, significa que la regla está habilitada en modo de error. En este caso, las reglas "no-underscore-dangle", "no-param-reassign" y "import/no-unresolved" están deshabilitadas.
+*/
 {
   "env": {
     "node": true,
@@ -13,8 +27,8 @@
     }
   },
   "rules": {
-     "no-underscore-dangle": 0,
-     "no-param-reassign": 0,
-     "import/no-unresolved": 0
-   }
+    "no-underscore-dangle": 0,
+    "no-param-reassign": 0,
+    "import/no-unresolved": 0
+  }
 }

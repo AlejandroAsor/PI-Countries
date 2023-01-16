@@ -1,0 +1,67 @@
+.container {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.datos {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.datos h4 {
+  margin: 10px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.difficulty {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.difficulty .icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.difficulty .easy {
+  background-color: #28a745;
+}
+
+.difficulty .medium {
+  background-color: #ffc107;
+}
+
+.difficulty .hard {
+  background-color: #dc3545;
+}
+
+@media (max-width: 600px) {
+  h3 {
+    font-size: 1.2rem;
+  }
+  .datos h4 {
+    font-size: 1rem;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .datos {
+    flex-direction: column;
+  }
+}
