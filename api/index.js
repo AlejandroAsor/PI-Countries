@@ -36,7 +36,7 @@ async function countriesLoaded() {
     const countriesApi = await axios.get("https://restcountries.com/v3.1/all");
 
     // Prepare data for bulk insert
-    const countriesData = countriesApi.data.map((c) => {
+    const countriesData = countriesApi.map((c) => {
       return {
         id: c.cca3,
         name: c.name.common,
