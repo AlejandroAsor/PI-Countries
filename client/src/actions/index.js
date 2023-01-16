@@ -9,8 +9,8 @@ import {
   ORDER_BY,
   DELETE_ACTIVITY,
 } from "./typeActions";
-
 import axios from "axios";
+
 export const getCountries = () => {
   return async function (dispatch) {
     try {

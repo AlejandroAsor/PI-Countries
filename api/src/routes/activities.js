@@ -80,7 +80,7 @@ router.delete("/:id", async (req, res) => {
 
 router.put("/update/:id", async (req, res) => {
   const { id } = req.params;
-  const { name, difficulty, duration, season} = req.body;
+  const { name, difficulty, duration, season } = req.body;
   const updateData = { name, difficulty, duration, season };
   const updateOptions = { where: { id } };
 
