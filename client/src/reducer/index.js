@@ -23,6 +23,8 @@ const rootReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case GET_ALL_COUNTRIES:
+      allCountries = action.payload;
+      allCountries.sort((a, b) => a.name.localeCompare(b.name));
       return {
         ...state,
         countries: action.payload,
