@@ -2,7 +2,7 @@ export function validate(input) {
   let errors = {};
   if (!input.name) {
     errors.name = "Debe ingresar un nombre";
-  } else if (!/[A-Za-z0-9]/.test(input.name)) {
+  } else if (!/^[A-Za-z0-9]+$/.test(input.name)) {
     errors.name = "El nombre admite solo letras, numeros y espacios";
   } else if (input.name.length < 3) {
     errors.name = "El nombre debe tener al menos 3 caracteres";

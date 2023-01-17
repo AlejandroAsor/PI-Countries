@@ -80,7 +80,6 @@ const rootReducer = (state = initialState, action) => {
 
     case ORDER_BY:
       let countrySorted = [];
-      //{alfabeticFilter: '', attributeFilter: ''}  //ascendente o descendente, nombre o poblacion
 
       if (
         action.payload.alfabeticFilter === "ascendente" &&
