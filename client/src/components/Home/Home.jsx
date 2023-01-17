@@ -27,17 +27,24 @@ export default function Home() {
   //PAGINADO
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage, setcountriesPerPage] = useState(9);
-  const indexOfLastCountry = currentPage * countriesPerPage;
-  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+  const indexOfLastCountry =
+    currentPage === 1
+      ? currentPage * countriesPerPage + 1
+      : currentPage * countriesPerPage;
+  const indexOfFirstCountry =
+    currentPage === 1 ? 0 : currentPage * countriesPerPage - 11;
   const currentCountries = allCountries.slice(
     indexOfFirstCountry,
-    indexOfLastCountry
+    indexOfLastCountry - 1
   );
-  console.log(currentCountries);
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
-    setcountriesPerPage(pageNumber > 1 ? 10 : 9);
+    if (pageNumber === 1) {
+      setcountriesPerPage(9);
+    } else {
+      setcountriesPerPage(10);
+    }
   };
   useEffect(() => {
     dispatch(getCountries());
