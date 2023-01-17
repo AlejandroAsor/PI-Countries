@@ -45,8 +45,10 @@ export default function ActivityCreate() {
   }
   function handleSelect(e) {
     if (e.target.value !== "Elegir País") {
-      if (input.paises.length >= 12) {
-        alert("Error: No puede seleccionar más de 12 países.");
+      if (input.paises.length >= 10) {
+        alert("No puede seleccionar más de 10 países.");
+      } else if (input.paises.includes(e.target.value)) {
+        alert("Ya ha seleccionado este país.");
       } else {
         setInput({
           ...input,

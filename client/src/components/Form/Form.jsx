@@ -33,11 +33,8 @@ function Form(props) {
             <div className={style.difficulty}>
               <h3>Dificultad:</h3>
               <input
-                type="number"
                 value={input.difficulty}
                 name="difficulty"
-                min="1"
-                max="5"
                 onChange={(e) => handleChange(e)}
               ></input>
             </div>
@@ -48,7 +45,6 @@ function Form(props) {
             <div className={style.duration}>
               <h3>Duración:</h3>
               <input
-                type="text"
                 value={input.duration}
                 name="duration"
                 onChange={(e) => handleChange(e)}
