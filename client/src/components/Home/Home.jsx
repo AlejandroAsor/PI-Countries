@@ -193,6 +193,7 @@ export default function Home() {
           countriesPerPage={countriesPerPage}
           allCountries={allCountries.length}
           paginado={paginado}
+          currentPage={currentPage}
         />
       </div>
 
