@@ -1,6 +1,6 @@
 import React from "react";
 import style from "../ActivityCreate/ActivityCreate.module.css";
-import FormError from "../Form/FormError";
+import FormError from "./FormError";
 
 const SelectedCountries = (props) => {
   const { countries } = props;
