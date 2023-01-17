@@ -1,10 +1,10 @@
 import React from "react";
 import style from "./Paginado.module.css";
 
-export default function Paginado({ countriesPerPage, allCountries, paginado }) {
+export default function Paginado({ allCountries, paginado }) {
   const pageNumbers = [];
-  for (let i = 0; i < Math.round(allCountries / countriesPerPage + 1); i++) {
-    if (i === 26) break;
+  let cantidadPaginas = Math.ceil(allCountries / 10 + 0.1);
+  for (let i = 0; i < cantidadPaginas; i++) {
     pageNumbers.push(i + 1);
   }
 

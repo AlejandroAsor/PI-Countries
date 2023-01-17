@@ -43,20 +43,19 @@ export default function ActivityCreate() {
       );
     }
   }
-
   function handleSelect(e) {
     if (e.target.value !== "Elegir País") {
-      setInput({
-        ...input,
-        paises: [...input.paises, e.target.value],
-      });
-
-      setErrors(
-        validate({
+      if (input.paises.length >= 12) {
+        alert("Error: No puede seleccionar más de 12 países.");
+      } else {
+        setInput({
           ...input,
           paises: [...input.paises, e.target.value],
-        })
-      );
+        });
+        setErrors(
+          validate({ ...input, paises: [...input.paises, e.target.value] })
+        );
+      }
     }
   }
 
