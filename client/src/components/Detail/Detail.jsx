@@ -1,26 +1,40 @@
-import React from "react";
-import { useEffect } from "react";
+// se importa react y react-redux para poder usar el hook useSelector y useDispatch para poder acceder al estado global y despachar acciones.
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+// se importa el hook useHistory para poder redireccionar a otra ruta.
 import { useHistory } from "react-router-dom";
-import { getDetail, deleteActivity } from "../../actions/index";
+
+// se importan las acciones que se van a despachar.
+import { getDetail, deleteActivity, clearState } from "../../actions/index";
+
+// se importan los componentes que se van a usar.
 import Activity from "../Activity/Activity";
 import CountryDetail from "../Country/CountryDetail";
+
+// se importan los estilos CSS.
 import style from "./Detail.module.css";
 
+// se crea un componente de funcion llamado Detail y se le pasa una propiedad props
 export default function Detail(props) {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const dispatch = useDispatch(); // se utiliza useDispatch para tener acceso a las acciones
+  const history = useHistory(); // se utiliza useHistory para tener acceso a la navegacion
 
   useEffect(() => {
-    dispatch(getDetail(props.match.params.id));
-  }, [props.match.params.id, dispatch]);
+    // se utiliza useEffect para ejecutar un efecto secundario despues de que el componente se renderiza por primera vez.
+    dispatch(getDetail(props.match.params.id)); // se ejecuta la accion getDetail y se le pasa el id como parametro
+    return () => clearState();
+  }, [props.match.params.id, dispatch]); // se especifican las dependencias de useEffect, en este caso el id y el dispatch
 
+  // se utiliza useSelector para acceder al estado global y se obtiene el detalle del pais.
   const country = useSelector((state) => state.detail);
 
+  // se crea una funcion que se ejecuta cuando se hace click en el boton eliminar actividad.
   function handleClick(id) {
+    // se ejecuta la accion deleteActivity y se le pasa el id de la actividad como parametro.
     dispatch(deleteActivity(id));
     alert("La actividad fue eliminada");
-    history.push("/countries");
+    history.push("/countries"); // se redirecciona a la ruta /countries
   }
 
   return (
@@ -72,13 +86,6 @@ export default function Detail(props) {
     </div>
   );
 }
-
-/* {this.props.movies.map(m => 
-    <li>
-      {m.title} 
-      <button onClick={() => this.props.removeMovieFavorite({id: m.id})}>X</button>
-    </li>)}
-</ul> */
 
 /* {input.paises.map((e) => (
     <ul>

@@ -1,32 +1,45 @@
+// Se importan los modulos necesarios
 import { useEffect, useState } from "react";
+// Se importa el modulo useDispatch para poder usar el dispatch de Redux en el componente y el modulo useSelector para poder usar el estado de Redux en el componente.
 import { useDispatch, useSelector } from "react-redux";
 
 import {
-  getCountries,
-  getActivities,
-  filterByContinent,
-  filterByActivity,
-  orderBy,
+  getCountries, // se importa la funcion para obtener los paises
+  getActivities, // se importa la funcion para obtener las actividades
+  filterByContinent, // se importa la funcion para filtrar por continente
+  filterByActivity, // se importa la funcion para filtrar por actividad
+  orderBy, // se importa la funcion para ordenar
 } from "../../actions/index";
+
+// se importa el componente Link de react-router-dom
 import { Link } from "react-router-dom";
+
+// se importa el componente Country
 import Country from "../Country/Country";
+
+// se importa el componente Paginado
 import Paginado from "../Paginado/Paginado";
+
+// se importa el componente SearchBar
 import SearchBar from "../SearchBar/SearchBar";
+
+// se importa el archivo de estilos CSS
 import style from "./Home.module.css";
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const allCountries = useSelector((state) => state.countries);
-  const allActivities = useSelector((state) => state.activities);
+  const dispatch = useDispatch(); // se crea una constante dispatch que es igual al useDispatch
+  const allCountries = useSelector((state) => state.countries); // se obtiene la lista de paises del estado de redux
+  const allActivities = useSelector((state) => state.activities); // se obtiene la lista de actividades del estado de redux
 
   const [typeOrder, setTypeOrder] = useState({
+    // se establece el estado inicial de typeOrder
     alfabeticFilter: "", //guarda ascendente o descendente
     attributeFilter: "", //guarda nombre o poblacion
   });
 
   //PAGINADO
-  const [currentPage, setCurrentPage] = useState(1);
-  const [countriesPerPage, setcountriesPerPage] = useState(9);
+  const [currentPage, setCurrentPage] = useState(1); // Se utiliza el hook "useState" para establecer el estado inicial de "currentPage" en 1. El estado "currentPage" se utilizará para saber en qué página se encuentra el usuario.
+  const [countriesPerPage, setcountriesPerPage] = useState(9); // Se utiliza el hook "useState" para establecer el estado inicial de "countriesPerPage" en 9. El estado "countriesPerPage" se utilizará para saber cuántos países se mostrarán por página.
   const indexOfLastCountry =
     currentPage === 1
       ? currentPage * countriesPerPage + 1
@@ -39,38 +52,45 @@ export default function Home() {
   );
 
   const paginado = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    // Se define una función "paginado" que recibe como parámetro "pageNumber" que representa el número de página en el que se encuentra el usuario.
+    setCurrentPage(pageNumber); // Utilizando el hook "useState" se actualiza el estado "currentPage" con el valor recibido como parámetro "pageNumber".
     if (pageNumber === 1) {
-      setcountriesPerPage(9);
+      // Se verifica si el valor de "pageNumber" es igual a 1
+      setcountriesPerPage(9); // en caso afirmativo se actualiza el estado "countriesPerPage" con el valor 9.
     } else {
-      setcountriesPerPage(10);
+      setcountriesPerPage(10); // en caso contrario se actualiza el estado "countriesPerPage" con el valor 10.
     }
   };
   useEffect(() => {
-    dispatch(getCountries());
-    dispatch(getActivities());
-  }, [dispatch]);
+    // Se utiliza el hook "useEffect" para ejecutar ciertas acciones cuando el componente es renderizado.
+    dispatch(getCountries()); // Se utiliza la función "dispatch" para despachar la acción "getCountries", la cual se encarga de obtener los países.
+    dispatch(getActivities()); // Se utiliza la función "dispatch" para despachar la acción "getActivities", la cual se encarga de obtener las actividades.
+  }, [dispatch]); // El segundo argumento es el arreglo de dependencias, en este caso solo se esta pasando el dispatch, esto indica que solo se ejecutara cuando el dispatch cambie, es decir, solo una vez al cargar el componente.
 
   function handleClickLimpiar(e) {
-    e.preventDefault();
-    dispatch(getCountries());
-    setCurrentPage(1);
+    // Se define una función llamada "handleClickLimpiar" que recibe un evento como parámetro. Esta función se utilizará como manejador de eventos para el botón "Limpiar".
+    e.preventDefault(); // Se utiliza esta línea para prevenir que el navegador realice la acción por defecto al hacer clic en el botón. En este caso, evita que la página se recargue.
+    dispatch(getCountries()); // Se utiliza la función "dispatch" para despachar la acción "getCountries" que se encarga de obtener todos los países.
+    setCurrentPage(1); // Se establece el estado "currentPage" en 1 para volver a la primera página de la vista.
   }
 
   function handleFilterContinent(e) {
     if (e.target.value !== "Elegir Continente") {
-      dispatch(filterByContinent(e.target.value));
-      setCurrentPage(1);
+      // Se utiliza una condicional para verificar si el valor seleccionado no es "Elegir Continente".
+      dispatch(filterByContinent(e.target.value)); // Si se cumple la condición anterior, se utiliza la función "dispatch" para despachar la acción "filterByContinent" y se pasa como parámetro el valor seleccionado en el menú desplegable.
+      setCurrentPage(1); // Se establece el estado "currentPage" en 1 para volver a la primera página de la vista.
     }
   }
 
   function handleFilterActivity(e) {
     if (e.target.value !== "Elegir Actividad") {
-      dispatch(filterByActivity(e.target.value));
-      setCurrentPage(1);
+      //  // Se utiliza una condicional para verificar si el valor seleccionado no es "Elegir Actividad".
+      dispatch(filterByActivity(e.target.value)); // Si se cumple la condición anterior, se utiliza la función "dispatch" para despachar la acción "filterByActivity" y se pasa como parámetro el valor
+      setCurrentPage(1); // Se establece el estado "currentPage" en 1 para volver a la primera página de la vista.
     }
   }
 
+  // se utiliza para actualizar el estado "typeOrder" con los valores seleccionados en los menús desplegables para ordenar los países.
   function handleOrderFilter(e) {
     setTypeOrder({
       ...typeOrder,
@@ -78,21 +98,25 @@ export default function Home() {
     });
   }
 
+  // es una función manejadora de eventos que se ejecuta cuando se hace clic en el botón "Filtrar".
   function handleClickFiltrar(e) {
+    // Se utiliza una condicional para verificar si se han seleccionado valores válidos en los menús desplegables para ordenar los países.
     if (
       (typeOrder.alfabeticFilter === "ascendente" ||
         typeOrder.alfabeticFilter === "descendente") &&
       (typeOrder.attributeFilter === "nombre" ||
         typeOrder.attributeFilter === "poblacion")
     ) {
-      e.preventDefault();
-      dispatch(orderBy(typeOrder));
-      setCurrentPage(1);
+      e.preventDefault(); // Se utiliza para prevenir que el navegador realice la acción por defecto al hacer clic en el botón. En este caso, evita que la página se recargue.
+      dispatch(orderBy(typeOrder)); //  Se utiliza la función "dispatch" para despachar la acción "orderBy" y se pasa como parámetro el estado "typeOrder" que contiene los valores seleccionados en los menús desplegables.
+      setCurrentPage(1); // Se establece el estado "currentPage" en 1 para volver a la primera página de la vista.
       setTypeOrder({
+        //Se actualiza el estado "typeOrder" con los valores seleccionados en los menús desplegables.
         alfabeticFilter: typeOrder.alfabeticFilter,
         attributeFilter: typeOrder.attributeFilter,
       });
     } else {
+      // Si no se han seleccionado valores válidos en los menús desplegables, se muestra un mensaje de alerta.
       alert("Debe seleccionar orden y tipo de filtro");
     }
   }

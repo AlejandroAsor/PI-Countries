@@ -1,6 +1,8 @@
+// importa react
 import React from "react";
 
 export default function CountryDetail({
+  // se exporta el componente de funcion CountryDetail y se le pasa como parametro un objeto con las propiedades
   image,
   name,
   id,
@@ -11,6 +13,7 @@ export default function CountryDetail({
   population,
 }) {
   return (
+    // se retorna el componente de funcion CountryDetail
     <div className="detail">
       <img src={image} alt={image} />
       <h1>{name}</h1>
