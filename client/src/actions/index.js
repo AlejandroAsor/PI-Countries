@@ -9,7 +9,6 @@ import {
   FILTER_BY_ACTIVITY,
   ORDER_BY,
   DELETE_ACTIVITY,
-  CLEAR_STATE,
 } from "./typeActions";
 
 // importa axios para hacer las peticiones a la API y la constante URL que contiene la dirección de la API
@@ -82,11 +81,7 @@ export const getNameCountry = (name) => {
     }
   };
 };
-export const clearState = () => {
-  return function (dispatch) {
-    dispatch({ type: CLEAR_STATE });
-  };
-};
+
 export const getDetail = (id) => {
   // Se exporta una función constante llamada "getDetail" que toma un argumento "id"
   return async function (dispatch) {
