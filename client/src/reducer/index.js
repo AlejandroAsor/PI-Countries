@@ -9,7 +9,6 @@ import {
   FILTER_BY_ACTIVITY,
   POST_ACTIVITY,
   DELETE_ACTIVITY,
-  CLEAR_STATE,
 } from "../actions/typeActions";
 
 // Establece un estado inicial para los datos almacenados en el almacenamiento global.
@@ -41,9 +40,6 @@ const rootReducer = (state = initialState, action) => {
     //Si el tipo de acción es GET_ALL_ACTIVITIES, se actualiza el estado de las actividades con los datos recibidos en la acción.
     case GET_ALL_ACTIVITIES:
       return { ...state, activities: action.payload };
-
-    case CLEAR_STATE:
-      return { ...state, detail: initialState.detail };
 
     // Si el tipo de acción es GET_NAME_COUNTRY, se actualiza el estado de los países con los datos recibidos en la acción.
     case GET_NAME_COUNTRY:
