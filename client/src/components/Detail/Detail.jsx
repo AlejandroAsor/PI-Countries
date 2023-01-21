@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 // se importan las acciones que se van a despachar.
-import { getDetail, deleteActivity, clearState } from "../../actions/index";
+import { getDetail, deleteActivity } from "../../actions/index";
 
 // se importan los componentes que se van a usar.
 import Activity from "../Activity/Activity";
@@ -23,7 +23,6 @@ export default function Detail(props) {
   useEffect(() => {
     // se utiliza useEffect para ejecutar un efecto secundario despues de que el componente se renderiza por primera vez.
     dispatch(getDetail(props.match.params.id)); // se ejecuta la accion getDetail y se le pasa el id como parametro
-    return () => clearState();
   }, [props.match.params.id, dispatch]); // se especifican las dependencias de useEffect, en este caso el id y el dispatch
 
   // se utiliza useSelector para acceder al estado global y se obtiene el detalle del pais.
